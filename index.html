@@ -85,25 +85,6 @@
             box-shadow: 0 12px 40px rgba(46, 125, 50, 0.4);
         }
 
-        .callback-btn {
-            display: inline-block;
-            background: #1B3A2D;
-            color: white;
-            padding: 16px 40px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            margin: 10px 0 20px;
-        }
-        .callback-btn:hover {
-            background: #2E7D32;
-            transform: scale(1.03);
-        }
-
         .max-btn {
             display: inline-block;
             background: #1B3A2D;
@@ -139,96 +120,6 @@
         .contacts .contact-item a { color: #2E7D32; text-decoration: none; font-weight: 500; }
         .contacts .contact-item a:hover { text-decoration: underline; }
 
-        .popup-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.6);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-        }
-        .popup-overlay.active { display: flex; }
-        .popup {
-            background: white;
-            border-radius: 40px;
-            padding: 40px;
-            max-width: 480px;
-            width: 90%;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            animation: popupIn 0.4s ease;
-        }
-        @keyframes popupIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-        .popup .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #999;
-            transition: 0.3s;
-            background: none;
-            border: none;
-        }
-        .popup .close-btn:hover { color: #1B3A2D; }
-        .popup .popup-subtitle {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #1B3A2D;
-            margin-bottom: 25px;
-            line-height: 1.3;
-        }
-        .popup .popup-form input {
-            width: 100%;
-            padding: 16px 20px;
-            border-radius: 60px;
-            border: 2px solid #DDE6E3;
-            font-size: 1rem;
-            margin-bottom: 12px;
-            transition: 0.3s;
-        }
-        .popup .popup-form input:focus {
-            outline: none;
-            border-color: #66BB6A;
-        }
-        .popup .popup-form button {
-            width: 100%;
-            padding: 16px;
-            border-radius: 60px;
-            border: none;
-            background: #2E7D32;
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .popup .popup-form button:hover {
-            background: #43A047;
-            transform: scale(1.02);
-        }
-        .popup .popup-form .privacy {
-            font-size: 0.75rem;
-            color: #999;
-            margin-top: 10px;
-        }
-
-        #hiddenFrame {
-            position: absolute;
-            width: 0;
-            height: 0;
-            border: 0;
-            visibility: hidden;
-        }
-
         .footer {
             text-align: center;
             padding: 20px 0;
@@ -241,13 +132,10 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
             .phone-call-btn { font-size: 1.1rem; padding: 14px 30px; width: 100%; text-align: center; }
-            .callback-btn { width: 100%; text-align: center; }
             .max-btn { width: 100%; text-align: center; }
             .header-content { flex-direction: column; align-items: center; }
             .header-stats { width: 100%; justify-content: space-around; }
             .contacts { grid-template-columns: 1fr; }
-            .popup { padding: 30px 20px; }
-            .popup .popup-subtitle { font-size: 1.5rem; }
             .benefits-list { font-size: 1.2rem; }
         }
     </style>
@@ -287,8 +175,6 @@
             </a>
 
             <br>
-            <button class="callback-btn" onclick="openPopup()">📞 Заказать звонок</button>
-            <br>
             <a href="https://max.ru/u/f9LHodD0cOIwBBHo9EB46uN2Fwg__4o9IDiQWyyc-ARIiRNAzB7MJAYiAY0" target="_blank" class="max-btn">
                 💬 Написать нам в MAX
             </a>
@@ -302,8 +188,8 @@
             <div class="contact-item">
                 <span class="icon">📍</span>
                 <strong>Адрес</strong><br />
-                <a href="https://yandex.ru/maps/?text=Санкт-Петербург%2C+пл.+Конституции%2C+2+оф.4" target="_blank">
-                    Санкт-Петербург, пл. Конституции, 2 оф.4
+                <a href="https://yandex.ru/maps/?text=г.+Санкт-Петербург%2C+пл.+Конституции%2C+2+оф.4" target="_blank">
+                    г. Санкт-Петербург, пл. Конституции, 2 оф.4
                 </a>
             </div>
             <div class="contact-item">
@@ -324,63 +210,6 @@
             <p>© 2026 Чистый Лист. Юридическая помощь по банкротству физических лиц.</p>
         </div>
     </footer>
-
-    <!-- ===== ПОПАП С ФОРМОЙ (без автоответа клиенту) ===== -->
-    <div class="popup-overlay" id="popup">
-        <div class="popup">
-            <button class="close-btn" onclick="closePopup()">✕</button>
-            <p class="popup-subtitle">Оставьте номер — и мы перезвоним в течение 15 минут</p>
-            <form class="popup-form" id="phoneForm" action="https://formsubmit.co/sborzakazovchl@yandex.ru" method="POST" target="hiddenFrame">
-                <!-- Скрытые поля для дублирования на три почты -->
-                <input type="hidden" name="_cc" value="denlookinval@yandex.ru, denlookinval@gmail.com" />
-                <input type="hidden" name="_subject" value="🔔 Новая заявка с сайта Чистый Лист" />
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_template" value="table" />
-                <!-- ↓↓↓ СТРОКА _autoresponse УДАЛЕНА ↓↓↓ -->
-                
-                <input type="tel" id="popupPhone" name="Телефон" placeholder="+7 (___)-___-__-__" required />
-                <button type="submit" id="submitBtn">Перезвоните мне</button>
-                <p class="privacy">Нажимая кнопку, вы соглашаетесь с политикой обработки данных</p>
-            </form>
-        </div>
-    </div>
-
-    <iframe id="hiddenFrame" name="hiddenFrame"></iframe>
-
-    <script>
-        function openPopup() {
-            document.getElementById('popup').classList.add('active');
-        }
-        function closePopup() {
-            document.getElementById('popup').classList.remove('active');
-        }
-
-        const isMobile = window.innerWidth <= 768;
-
-        document.getElementById('phoneForm').addEventListener('submit', function(e) {
-            const phone = document.getElementById('popupPhone').value.trim();
-            if (phone.length < 5) {
-                alert('Пожалуйста, введите корректный номер телефона.');
-                e.preventDefault();
-                return;
-            }
-
-            if (!isMobile) {
-                alert(`🔔 ВНИМАНИЕ! Клиент оставил номер телефона: ${phone}`);
-            }
-
-            const btn = document.getElementById('submitBtn');
-            btn.disabled = true;
-            btn.textContent = '⏳ Отправка...';
-
-            setTimeout(() => {
-                btn.disabled = false;
-                btn.textContent = 'Перезвоните мне';
-                document.getElementById('popupPhone').value = '';
-                closePopup();
-            }, 3000);
-        });
-    </script>
 
 </body>
 </html>
