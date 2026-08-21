@@ -10,6 +10,7 @@
         body { background: #F5F7F6; color: #1E2B2A; line-height: 1.6; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
+        /* ===== ШАПКА ===== */
         .header {
             background: linear-gradient(135deg, #1B3A2D 0%, #2E7D32 100%);
             color: white;
@@ -34,6 +35,7 @@
         }
         .header-stats strong { display: block; font-size: 1.1rem; color: #A5D6A7; }
 
+        /* ===== БАННЕР ===== */
         .hero {
             background: linear-gradient(135deg, #E8F0EA 0%, #C5D9CD 40%, #A8C4B6 100%);
             padding: 40px 20px 50px;
@@ -66,44 +68,76 @@
             background-size: 22px;
         }
 
-        .phone-call-btn {
+        /* ===== НОВЫЙ БЛОК "УЗНАЙТЕ" ===== */
+        .cta-block {
+            background: white;
+            border-radius: 32px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 6px 30px rgba(0,0,0,0.04);
+            text-align: center;
+        }
+        .cta-block .cta-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #1B3A2D;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+        .cta-block .cta-title .highlight {
+            color: #2E7D32;
+        }
+        .cta-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .cta-actions .cta-item {
+            flex: 1 1 200px;
+            text-align: center;
+        }
+        .cta-actions .cta-item .label {
+            font-size: 0.9rem;
+            color: #4A5A58;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .cta-actions .cta-item .cta-phone {
             display: inline-block;
             background: #2E7D32;
             color: white;
-            padding: 18px 50px;
+            padding: 16px 30px;
             border-radius: 60px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 30px rgba(46, 125, 50, 0.3);
-            margin: 10px 0;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2);
         }
-        .phone-call-btn:hover {
-            transform: scale(1.05);
+        .cta-actions .cta-item .cta-phone:hover {
+            transform: scale(1.03);
             background: #388E3C;
-            box-shadow: 0 12px 40px rgba(46, 125, 50, 0.4);
         }
-
-        .max-btn {
+        .cta-actions .cta-item .cta-max {
             display: inline-block;
             background: #1B3A2D;
             color: white;
-            padding: 16px 40px;
+            padding: 16px 30px;
             border-radius: 60px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            margin: 10px 0 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-        .max-btn:hover {
-            background: #2E7D32;
+        .cta-actions .cta-item .cta-max:hover {
             transform: scale(1.03);
+            background: #2E7D32;
         }
 
+        /* ===== КОНТАКТЫ ===== */
         .contacts {
             background: white;
             border-radius: 32px;
@@ -120,6 +154,7 @@
         .contacts .contact-item a { color: #2E7D32; text-decoration: none; font-weight: 500; }
         .contacts .contact-item a:hover { text-decoration: underline; }
 
+        /* ===== ФУТЕР ===== */
         .footer {
             text-align: center;
             padding: 20px 0;
@@ -131,17 +166,21 @@
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
-            .phone-call-btn { font-size: 1.1rem; padding: 14px 30px; width: 100%; text-align: center; }
-            .max-btn { width: 100%; text-align: center; }
+            .cta-block .cta-title { font-size: 2rem; }
+            .cta-actions { flex-direction: column; gap: 15px; }
+            .cta-actions .cta-item { width: 100%; }
+            .cta-actions .cta-item .cta-phone,
+            .cta-actions .cta-item .cta-max { width: 100%; box-sizing: border-box; }
             .header-content { flex-direction: column; align-items: center; }
             .header-stats { width: 100%; justify-content: space-around; }
-            .contacts { grid-template-columns: 1fr; }
             .benefits-list { font-size: 1.2rem; }
+            .contacts { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
+    <!-- ===== ШАПКА ===== -->
     <header class="header">
         <div class="container header-content">
             <div class="logo">
@@ -154,6 +193,7 @@
         </div>
     </header>
 
+    <!-- ===== БАННЕР ===== -->
     <section class="hero">
         <div class="container">
             <div class="hero-image">
@@ -169,20 +209,29 @@
                 <li>всесторонняя помощь и поддержка до конца процесса</li>
                 <li>никаких скрытых платежей и доплат</li>
             </ul>
-
-            <a href="tel:+79669318810" class="phone-call-btn">
-                📞 Позвонить: +7 (966) 931-88-10
-            </a>
-
-            <br>
-            <a href="https://max.ru/u/f9LHodD0cOIwBBHo9EB46uN2Fwg__4o9IDiQWyyc-ARIiRNAzB7MJAYiAY0" target="_blank" class="max-btn">
-                💬 Написать нам в MAX
-            </a>
-
-            <p style="font-size:0.9rem; color:#4A5A58; margin-top:10px;">Нажмите на номер, чтобы сразу позвонить</p>
         </div>
     </section>
 
+    <!-- ===== НОВЫЙ БЛОК "УЗНАЙТЕ" ===== -->
+    <div class="container">
+        <div class="cta-block">
+            <div class="cta-title">
+                Узнайте — <span class="highlight">подходите</span> Вы<br>для списания долгов или нет
+            </div>
+            <div class="cta-actions">
+                <div class="cta-item">
+                    <span class="label">📞 Позвоните</span>
+                    <a href="tel:+79669318810" class="cta-phone">+7 (966) 931-88-10</a>
+                </div>
+                <div class="cta-item">
+                    <span class="label">💬 Напишите в MAX</span>
+                    <a href="https://max.ru/u/f9LHodD0cOIwBBHo9EB46uN2Fwg__4o9IDiQWyyc-ARIiRNAzB7MJAYiAY0" target="_blank" class="cta-max">Написать в MAX</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== КОНТАКТЫ ===== -->
     <div class="container">
         <div class="contacts">
             <div class="contact-item">
@@ -205,6 +254,7 @@
         </div>
     </div>
 
+    <!-- ===== ФУТЕР ===== -->
     <footer class="footer">
         <div class="container">
             <p>© 2026 Чистый Лист. Юридическая помощь по банкротству физических лиц.</p>
